@@ -30,8 +30,8 @@ is given in the content-type header. If it is not given, the
 > ## ⚠  Security Notice
 > When using with RegExp to detect `Content-Type`, you should beware of
 > how to proper detect the `Content-Type`. For example, if you need
-> `application/*`, you should use `/^application\/(.*);?/` to match the
-> essence MIME types only.
+> `application/*`, you should use `/^application\/([\w-]+);?/` to 
+> match the essence MIME types only.
 
 ### Usage
 ```js
@@ -56,7 +56,7 @@ fastify.addContentTypeParser('application/jsoff', async function (request, paylo
 })
 
 // Handle all content types that matches RegExp
-fastify.addContentTypeParser(/^image\/(.*);?/, function (request, payload, done) {
+fastify.addContentTypeParser(/^image\/([\w-]+);?/, function (request, payload, done) {
   imageParser(payload, function (err, body) {
     done(err, body)
   })
