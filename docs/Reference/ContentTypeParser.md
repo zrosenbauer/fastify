@@ -30,8 +30,9 @@ is given in the content-type header. If it is not given, the
 > ## ⚠  Security Notice
 > When using with RegExp to detect `Content-Type`, you should beware of
 > how to proper detect the `Content-Type`. For example, if you need
-> `application/*`, you should use `/^application\/([\w-]+);?/` to 
-> match the essence MIME types only.
+> `application/*`, you should use `/^application\/([\w-]+);?/` to match the
+> [essence MIME type](https://mimesniff.spec.whatwg.org/#mime-type-miscellaneous)
+> only.
 
 ### Usage
 ```js
