@@ -1334,6 +1334,11 @@ test('file option', t => {
     reply.send({ hello: 'world' })
   })
 
+  t.teardown(() => {
+    // Close the logger, hopefully closing the file
+    fastify.log[pino.symbols.streamSym].end()
+  })
+
   fastify.listen({ port: 0, host: localhost }, err => {
     t.error(err)
     t.teardown(() => { fastify.close() })
